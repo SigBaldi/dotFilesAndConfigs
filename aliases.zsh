@@ -22,6 +22,28 @@ alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
+alias pgh="cd ~/Projects/GitHub"
+#
+#########
+#       #
+#  GIT  #
+#       #
+#########
+#
+# Shallow clone a repo, narrowed to master
+alias gcns="git clone depth 1 -b master"
+#
+# Cleanup merged branches
+alias gbclean="!f() { git branch --merged ${1-master} | grep -v ' ${1-master}$' | xargs -r git branch -d; }; f"
+#
+# Amend last commit
+alias gam="git commit --amend -m"
+#
+# Grep for a term in codebase, starting at current folder
+alias grip = "git grep -li"
+#
+# Grep for a term in codebase, starting at root folder
+alias gripr = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
 #
 ##############
 #            #
@@ -29,8 +51,8 @@ alias p="cd ~/Projects"
 #            #
 ##############
 #
-# Homebrew miantenance
-alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+# Homebrew maintenance
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
 #
 #########
 #       #
