@@ -7,6 +7,7 @@ Here are the ones i treasure.
 ### Collection of useful aliases divided by category.
 The file [aliases.zsh](aliases.zsh) contains the following categories:
 - Finder
+- GIT
 - Homebrew
 - NPM
 - Shell
