@@ -23,7 +23,6 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias pgh="cd ~/Projects/GitHub"
-
 #########
 #       #
 #  GIT  #
