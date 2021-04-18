@@ -9,5 +9,6 @@ The file [aliases.zsh](aliases.zsh) contains the following categories:
 - Finder
 - GIT
 - Homebrew
+- Node
 - NPM
 - Shell

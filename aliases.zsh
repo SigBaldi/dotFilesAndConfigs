@@ -2,8 +2,7 @@
 ## Collection of useful aliases divided by category.
 
 # Example
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias zshconfig="code ~/.zshrc"
 
 ############
 #          #
@@ -14,15 +13,14 @@
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
+# Screensaver
+if [[ -f "/System/Library/CoreServices/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine" ]]; then
+    alias ss="open -a ScreenSaverEngine"
+fi
+
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
-# Shortcuts
-alias d="cd ~/Documents"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
-alias pgh="cd ~/Projects/GitHub"
 #########
 #       #
 #  GIT  #
@@ -30,7 +28,7 @@ alias pgh="cd ~/Projects/GitHub"
 #########
 
 # Shallow clone a repo, narrowed to master
-alias gcns="git clone depth 1 -b master"
+alias gcs="git clone depth 1"
 
 # Cleanup merged branches
 alias gbclean="!f() { git branch --merged ${1-master} | grep -v ' ${1-master}$' | xargs -r git branch -d; }; f"
@@ -42,7 +40,7 @@ alias gam="git commit --amend -m"
 alias grip="git grep -li"
 
 # Grep for a term in codebase, starting at root folder
-alias gripr="!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+# alias gripr="!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
 
 ##############
 #            #
@@ -53,12 +51,22 @@ alias gripr="!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd 
 # Homebrew maintenance
 alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 
+##########
+#        #
+#  Node  #
+#        #
+##########
+
+alias freeport="lsof-P -t -i tcp:$1 | xargs kill"
+
 #########
 #       #
 #  NPM  #
 #       #
 #########
 
+# Update NPM
+alias npmup="npm install -g npm"
 # List NPM Global Dependencies
 alias npmgl="npm list -g --depth=0"
 
@@ -74,16 +82,19 @@ alias npmgu="npm update -g --depth=0"
 #         #
 ###########
 
+# Edit this file
+alias aliases="vim ~/.oh-my-zsh/custom/aliases.zsh"
+
 # Configure ZSH
 alias zshconfig="vim ~/.zshrc"
 
 # Configure Oh My ZSH
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias ohmyzsh="vim ~/.oh-my-zsh/oh-my-zsh.sh"
 
 # Print each PATH entry on a separate line
 alias path="echo -e ${PATH//:/\\n}"
 
-# Preview in Terminal window...
+# Preview in Terminal window... (requires fzf, can be installed running `brew install fzf`)
 alias preview="fzf --preview 'bat --color \"always\" {}'"
 
 # ...and add support for ctrl+o to open selected file in VS Code
