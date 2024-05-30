@@ -40,7 +40,13 @@ setopt CORRECT
 alias sudo='sudo '
 
 # Load asdf
-. $(brew --prefix asdf)/asdf.sh
+. $(brew --prefix asdf)/bin/asdf.sh
+
+# Initialize zoxide
+eval "$(zoxide init zsh)"
+
+# Add Poetry to the Path
+export PATH="$HOME/.poetry/bin:$PATH"
 
 # Load other scripts if needed
 # For example, source any additional configuration files here

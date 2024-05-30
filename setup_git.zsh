@@ -39,7 +39,7 @@ git config --global mergetool.delta.cmd "delta --diff"
 git config --global mergetool.delta.trustExitCode true
 
 # Output confirmation
-echo "Git configuration updated successfully!"
+echo -e "Git configuration updated successfully!"
 echo "User name: $git_username"
 echo "Email: $git_email"
 
@@ -49,15 +49,15 @@ generate_ssh_key() {
     
     # Generate SSH key if it does not already exist
     if [ -f "$ssh_key_file" ]; then
-        echo "SSH key already exists at $ssh_key_file"
+        echo -e "SSH key already exists at $ssh_key_file"
     else
         ssh-keygen -t rsa -b 4096 -C "$git_email" -f "$ssh_key_file" -N ""
-        echo "SSH key generated successfully!"
+        echo -e "SSH key generated successfully!"
     fi
     
     # Output the SSH public key
     ssh_pub_key=$(cat "${ssh_key_file}.pub")
-    echo "Your SSH public key is:"
+    echo -e "Your SSH public key is:"
     echo "$ssh_pub_key"
 }
 
@@ -65,19 +65,19 @@ generate_ssh_key() {
 add_ssh_key_to_agent() {
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_rsa
-    echo "SSH key added to the ssh-agent."
+    echo -e "SSH key added to the ssh-agent."
 }
 
 # Function to copy SSH key to clipboard and provide GitHub link
 copy_ssh_key_and_github_instructions() {
     if command -v pbcopy &> /dev/null; then
         cat ~/.ssh/id_rsa.pub | pbcopy
-        echo "SSH public key copied to clipboard."
+        echo -e "SSH public key copied to clipboard."
     else
-        echo "pbcopy command not found. Please manually copy your SSH public key:"
+        echo -e "pbcopy command not found. Please manually copy your SSH public key:"
         cat ~/.ssh/id_rsa.pub
     fi
-    echo "Add the SSH key to your GitHub account using the following link:"
+    echo -e "Add the SSH key to your GitHub account using the following link:"
     echo "https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account#adding-a-new-ssh-key-to-your-account"
 }
 
