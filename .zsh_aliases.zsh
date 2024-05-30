@@ -1,0 +1,231 @@
+# ALIASES
+## Collection of useful aliases divided by category.
+
+# Example
+# alias zshconfig="nvim ~/.zshrc"
+
+###########
+#         #
+#  Shell  #
+#         #
+###########
+
+# Configure ZSH
+alias zshconfig="vim ~/.zshrc"
+
+# Edit this file
+alias aliases="vim ~/.oh-my-zsh/custom/aliases.zsh"
+
+# Configure ZSH
+alias zshconfig="vim ~/.zshrc"
+
+# Print each PATH entry on a separate line
+alias path="echo -e ${PATH//:/\\n}"
+
+# Preview in Terminal window... (requires fzf and bat, can be installed running `brew install fzf bat`)
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+
+# ...and add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload="exec ${SHELL} -l"
+
+# Safety
+alias rm="rm -i"
+alias chown="chown --preserve-root"
+alias chmod="chmod --preserve-root"
+alias chgrp="chgrp --preserve-root"
+
+# Other
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias df="df -H"
+alias du="dust"
+alias h="history"
+alias j="jobs -l"
+alias v="nvim"  # I prefer Neovim
+alias vis="nvim +':w ++ff=unix' +':set ff=unix'"
+alias please="sudo "
+alias psmem="ps aux --sort=-%mem | head"
+alias top="htop"
+alias reload="source ~/.zshrc"  # Reload the Zsh configuration
+
+# Network
+alias myip="xh http://ipecho.net/plain; echo"
+alias netCons="lsof -i"
+alias flushDNS="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+alias lsock="sudo /usr/sbin/lsof -i -P"
+alias lsockU="sudo /usr/sbin/lsof -nP | grep UDP"
+alias lsockT="sudo /usr/sbin/lsof -nP | grep TCP"
+alias ipInfo0="ipconfig getpacket en0"
+alias ipInfo1="ipconfig getpacket en1"
+alias openPorts="sudo lsof -i | grep LISTEN"
+alias showBlocked="sudo ipfw list"
+
+############
+#          #
+#  System  # 
+#          #
+############
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Screensaver
+alias ss="open -a ScreenSaverEngine"
+
+# Recursively delete `.DS_Store` files (uses fd)
+alias cleanup="fd . -type f -name '*.DS_Store' -ls -delete"
+
+###############
+#             #
+#  Directory  #
+#             #
+###############
+
+# Directory Traversal
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Directory Listing with eza
+## General use
+alias l="eza"  # Simple list
+alias lh="eza -GFh"  # Color, classify entries, human-readable sizes
+alias ll="eza -lbF --git"  # Long list with size, type, and Git status
+alias la="eza -A"  # Include almost all entries (exclude `.` and `..`)
+alias lc="eza -lbhHigUmuSa --time-style=long-iso --git --color-scale"  # Comprehensive list with detailed options
+alias lx="eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale"  # Comprehensive extended list
+
+## Specialty views
+alias lS="eza -1"  # One column, just names
+alias lt="eza --tree --level=2"  # Tree view
+
+#########
+#       #
+#  GIT  #
+#       #
+#########
+
+alias g="git"  # Shortcut for git
+alias ga="git add"  # Adds files to the staging area
+alias gaa="git add --all"  # Adds all changes to the staging area
+alias gam="git commit --amend -m"  # Amends the last commit with a new message
+alias gb="git branch"  # Lists branches
+alias gba="git branch -a"  # Lists all branches (local and remote)
+alias gbd="git branch -d"  # Deletes a branch
+alias gbda="git branch --no-color --merged | command grep -vE '^(\+|\*|\s*(master|main)\s*$)' | command xargs -n 1 git branch -d"  # Deletes all merged branches except master and main
+alias gc="git commit -v"  # Commits with verbose mode
+alias gca="git commit -v -a"  # Commits all changes with verbose mode
+alias gcm="git commit -m"  # Commits with a message
+alias gcam="git commit -a -m"  # Commits all changes with a message
+alias gco="git checkout"  # Checks out a branch or paths to the working tree
+alias gcount="git shortlog -sn"  # Summarizes contributions by author
+alias gcp="git cherry-pick"  # Applies the changes introduced by some existing commits
+alias gcl="git clone --recursive"  # Clones a repository and initializes all submodules
+alias gcs="git clone --depth 1 --branch master"  # Clones only the latest commit of the master branch
+alias gd="git diff"  # Shows changes between commits, commit and working tree, etc. (Delta)
+alias gdc="git diff --cached"  # Shows changes between staged changes and the last commit
+alias gdt="git difftool"  # Shows changes using an external diff tool
+alias gf="git fetch"  # Fetches from a remote repository
+alias gfo="git fetch origin"  # Fetches from the origin remote
+alias gk="gitk --all --branches"  # Opens gitk, a graphical history viewer for Git repositories
+alias gl="git pull"  # Pulls changes from a remote repository
+alias glg="git log --stat --max-count=10"  # Shows the last 10 commits with stats
+alias glgp="git log --stat --max-count=10 -p"  # Shows the last 10 commits with stats and patch
+alias gm="git merge"  # Merges branches
+alias gp="git push"  # Pushes changes to a remote repository
+alias gpo="git push origin"  # Pushes changes to the origin remote
+alias gr="git remote"  # Manages set of tracked repositories
+alias gra="git remote add"  # Adds a remote repository
+alias grmv="git remote rename"  # Renames a remote repository
+alias grrm="git remote remove"  # Removes a remote repository
+alias grset="git remote set-url"  # Changes the URL of a remote repository
+alias grt="cd $(git rev-parse --show-toplevel)"  # Changes directory to the root of the Git repository
+alias gss="git status -s"  # Shows the status of the working directory in short format
+alias gst="git status"  # Shows the status of the working directory
+alias gsta="git stash save"  # Saves changes to the stash
+alias gstaa="git stash apply"  # Applies changes from the stash
+alias gstd="git stash drop"  # Drops a stash
+alias gstl="git stash list"  # Lists all stashes
+alias gstp="git stash pop"  # Applies and drops the latest stash
+alias gsts="git stash show --text"  # Shows the changes recorded in the stash
+alias gsu="git submodule update"  # Updates all submodules
+alias gmt="git mergetool"  # Runs a merge conflict resolution tool (Delta)
+
+##############
+#            #
+#  Homebrew  #
+#            #
+##############
+
+# Homebrew maintenance
+alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
+
+##########
+#        #
+#  Node  #
+#        #
+##########
+
+alias freeport="lsof -P -t -i tcp:$1 | xargs kill"
+
+#########
+#       #
+#  NPM  #
+#       #
+#########
+
+# Update NPM
+alias npmup="npm install -g npm"
+# List NPM Global Dependencies
+alias npmgl="npm list -g --depth=0"
+
+# Check NPM Global Dependencies for updates
+alias npmgo="npm outdated -g --depth=0"
+
+# Update NPM Global Dependencies
+alias npmgu="npm update -g --depth=0"
+
+
+############
+#          #
+#  Docker  #
+#          #
+############
+
+alias dps="docker ps"
+alias di="docker images"
+alias dstop="docker stop $(docker ps -a -q)"
+alias drm="docker rm $(docker ps -a -q)"
+alias drmi="docker rmi $(docker images -q)"
+
+######################
+#                    #
+#  Custom Functions  #
+#                    #
+######################
+
+extract() {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1    ;;
+            *.tar.gz)    tar xvzf $1    ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar x $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xvf $1     ;;
+            *.tbz2)      tar xvjf $1    ;;
+            *.tgz)       tar xvzf $1    ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
