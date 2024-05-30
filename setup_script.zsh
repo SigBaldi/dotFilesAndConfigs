@@ -11,13 +11,13 @@ fi
 # Update Homebrew and install essential packages
 echo "Updating Homebrew and installing essential packages..."
 brew update
-brew install bat delta dog dust eza fd ffmpegthumbnailer fzf git git-cliff inlyne jq lazigit poppler ripgrep starship unar wezterm xh yazi zellij zoxide
+brew install asdf bat delta dog dust eza fd ffmpegthumbnailer fzf git git-cliff inlyne jq lazygit poppler ripgrep starship unar wezterm xh yazi zellij zoxide
 
 brew install --cask font-jetbrains-mono-nerd-font insomnia obsidian rectangle wezterm
 
-# Set up Starship prompt
-echo "Setting up Starship prompt..."
-echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+# Install fzf key bindings and fuzzy completion
+echo "Setting up fzf key bindings and fuzzy completion..."
+$(brew --prefix)/opt/fzf/install
 
 # Download shell configuration
 echo "Downloading shell configuration..."
@@ -27,19 +27,15 @@ curl -o ~/.zshrc https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/m
 echo "Downloading custom aliases..."
 curl -o ~/.zsh_aliases.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/zsh_aliases.zsh
 
+# Source .zshrc to apply changes
+echo "Sourcing .zshrc to apply changes..."
+source ~/.zshrc
+
 # Download tools configuration
 echo "Downloading basic Yazi configuration..."
 curl - ~/.config/yazi/keymap.toml https://raw.githubusercontent.com/sxyazi/yazi/latest/yazi-config/preset/keymap.toml
 curl - ~/.config/yazi/theme.toml https://raw.githubusercontent.com/sxyazi/yazi/latest/yazi-config/preset/theme.toml
 curl - ~/.config/yazi/yazi.toml https://raw.githubusercontent.com/sxyazi/yazi/latest/yazi-config/preset/yazi.toml
-
-# Install fzf key bindings and fuzzy completion
-echo "Setting up fzf key bindings and fuzzy completion..."
-$(brew --prefix)/opt/fzf/install
-
-# Set up asdf for managing versions
-echo "Setting up asdf..."
-echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> ~/.zshrc
 
 # Install Node.js using asdf
 echo "Installing Node.js using asdf..."
