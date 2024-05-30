@@ -2,8 +2,8 @@
 eval "$(starship init zsh)"
 
 # Source custom aliases and functions
-if [ -f ~/.config/.zsh_aliases ]; then
-    source ~/.config/.zsh_aliases
+if [ -f ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases
 fi
 
 # History settings
@@ -45,8 +45,5 @@ alias sudo='sudo '
 # Initialize zoxide
 eval "$(zoxide init zsh)"
 
-# Add Poetry to the Path
-export PATH="$HOME/.poetry/bin:$PATH"
-
 # Load other scripts if needed
-# For example, source any additional configuration files here
+# For example, any additional configuration appended by scripts will be listed below

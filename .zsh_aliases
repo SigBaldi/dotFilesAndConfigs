@@ -1,9 +1,6 @@
 # ALIASES
 ## Collection of useful aliases divided by category.
 
-# Example
-# alias zshconfig="nvim ~/.zshrc"
-
 ###########
 #         #
 #  Shell  #
@@ -14,10 +11,7 @@
 alias zshconfig="vim ~/.zshrc"
 
 # Edit this file
-alias aliases="vim ~/.oh-my-zsh/custom/aliases.zsh"
-
-# Configure ZSH
-alias zshconfig="vim ~/.zshrc"
+alias aliases="vim ~/.zsh_aliases"
 
 # Print each PATH entry on a separate line
 alias path="echo -e ${PATH//:/\\n}"
@@ -50,7 +44,6 @@ alias vis="nvim +':w ++ff=unix' +':set ff=unix'"
 alias please="sudo "
 alias psmem="ps aux --sort=-%mem | head"
 alias top="htop"
-alias reload="source ~/.zshrc"  # Reload the Zsh configuration
 
 # Network
 alias myip="xh http://ipecho.net/plain; echo"
@@ -179,17 +172,10 @@ alias freeport="lsof -P -t -i tcp:$1 | xargs kill"
 #       #
 #########
 
-# Update NPM
-alias npmup="npm install -g npm"
-# List NPM Global Dependencies
-alias npmgl="npm list -g --depth=0"
-
-# Check NPM Global Dependencies for updates
-alias npmgo="npm outdated -g --depth=0"
-
-# Update NPM Global Dependencies
-alias npmgu="npm update -g --depth=0"
-
+alias npmup="npm install -g npm" # Update NPM
+alias npmgl="npm list -g --depth=0" # List NPM Global Dependencies
+alias npmgo="npm outdated -g --depth=0" # Check NPM Global Dependencies for updates
+alias npmgu="npm update -g --depth=0" # Update NPM Global Dependencies
 
 ############
 #          #
