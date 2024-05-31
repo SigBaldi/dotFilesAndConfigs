@@ -40,7 +40,7 @@ setopt CORRECT
 alias sudo='sudo '
 
 # Load asdf
-. $(brew --prefix asdf)/bin/asdf.sh
+. $(brew --prefix asdf)/bin/asdf
 
 # Initialize zoxide
 eval "$(zoxide init zsh)"
