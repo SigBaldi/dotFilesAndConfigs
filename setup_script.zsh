@@ -70,8 +70,8 @@ while true; do
         2)
             echo -e "\nDownloading asdf setup script..."
             xh -o $temp_dir/setup_asdf.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/master/setup_asdf.zsh
-            chmod +x $temp_dir/setup_asdf.sh
-            $temp_dir/setup_asdf.sh
+            chmod +x $temp_dir/setup_asdf.zsh
+            $temp_dir/setup_asdf.zsh
             ;;
         3)
             echo "No additional setup scripts will be run."
