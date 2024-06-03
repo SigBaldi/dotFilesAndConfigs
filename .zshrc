@@ -6,6 +6,11 @@ if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
 fi
 
+# Personal Config - XDG inspired
+export USER_PROJECTS="$HOME/Projects/GitHub"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$USER_PROJECTS/dotFilesAndConfigs"
+
 # History settings
 HISTSIZE=10000
 SAVEHIST=10000

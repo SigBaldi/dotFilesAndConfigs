@@ -2,9 +2,11 @@
 # dotFilesAndConfigs
 Like gems hide in stone, `dotFiles` are hidden in your system but provide us with countless functionalities.
 Here are the ones I treasure.
+Includes different configs –nvim, yazi, zellij– and a workflow to manage them.
 
 ## Shell Config
-The [.zshrc](.zshrc) file provides similar functionalities to Oh My Zsh while using Starship and sources my aliases from a separate file. 
+The [.zshrc](.zshrc) file provides similar functionalities to Oh My Zsh while using Starship, sources my aliases from a separate file. Any dotfile and config can be added/updated via the workflow commands aliased below.
+
 ## Aliases - Collection of useful aliases divided by category.
 The file [.zsh_aliases.zsh](.zsh_aliases.zsh) contains the following categories:
 
@@ -17,12 +19,33 @@ The file [.zsh_aliases.zsh](.zsh_aliases.zsh) contains the following categories:
 - NPM
 - Docker
 - Custom Functions
+- Config Mangement Workflow - Commands:
+    
+``` bash
+edit_config <filename or path>
+update_config <filename or path>
+manage_config <filename or path>
+```
 
 ## Other Tools
-The .config/ folder contains separate configs for other tools:
+Contains separate configs for other tools as directories:
+- nvim (Neovim)
 - yazi
+- zellij
+
+### NeoVim: hyperextensible Vim-based text editor
+Set up Neovim with a basic configuration and plugin setup.
+This setup includes:
+
+- Basic Neovim settings for a better editing experience.
+- Plugin management using lazy.nvim.
+- Essential plugins for file exploration, LSP, autocompletion, status line, syntax highlighting, and fuzzy finding.
+- A popular colorscheme (Gruvbox) for better visuals.
 
 ### Yazi: Blazing fast terminal file manager written in Rust, based on async I/O.
+
+### Zellij: A terminal workspace with batteries included
+
 
 ## Installation
 The script included can setup a ZSH shell, your GIT config, Node LTS and Python latest via asdf.
