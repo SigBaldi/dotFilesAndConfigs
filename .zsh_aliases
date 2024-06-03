@@ -7,12 +7,6 @@
 #         #
 ###########
 
-# Configure ZSH
-alias zshconfig="vim ~/.zshrc"
-
-# Edit this file
-alias aliases="vim ~/.zsh_aliases"
-
 # Print each PATH entry on a separate line
 alias path="echo -e ${PATH//:/\\n}"
 
@@ -36,7 +30,8 @@ alias df="df -H"
 alias du="dust"
 alias h="history"
 alias j="jobs -l"
-alias v="nvim"  # I prefer Neovim
+alias kk="clear"
+alias nv="nvim"  # I prefer Neovim
 alias vis="nvim +':w ++ff=unix' +':set ff=unix'"
 alias please="sudo "
 alias psmem="ps aux --sort=-%mem | head"
@@ -124,6 +119,7 @@ alias gf="git fetch"  # Fetches from a remote repository
 alias gfo="git fetch origin"  # Fetches from the origin remote
 alias gk="gitk --all --branches"  # Opens gitk, a graphical history viewer for Git repositories
 alias gl="git pull"  # Pulls changes from a remote repository
+alias glom="git pull origin"
 alias glg="git log --stat --max-count=10"  # Shows the last 10 commits with stats
 alias glgp="git log --stat --max-count=10 -p"  # Shows the last 10 commits with stats and patch
 alias gm="git merge"  # Merges branches
@@ -212,3 +208,13 @@ extract() {
         echo "'$1' is not a valid file"
     fi
 }
+
+##############################
+#                            #
+#  Config management workflow  #
+#                            #
+##############################
+
+alias edit_config="chmod +x $XDG_DATA_HOME/workflow/edit_dotfile_or_config.sh && $XDG_DATA_HOME/workflow/edit_dotfile_or_config.sh"
+alias update_config="chmod +x $XDG_DATA_HOME/workflow/update_dotfile_or_config.sh && $XDG_DATA_HOME/workflow/update_dotfile_or_config.sh"
+alias manage_config="chmod +x $XDG_DATA_HOME/workflow/manage_dotfile_or_config.sh && $XDG_DATA_HOME/workflow/manage_dotfile_or_config.sh"

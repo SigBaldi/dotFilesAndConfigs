@@ -11,7 +11,7 @@ fi
 # Update Homebrew and install essential packages
 echo -e "\nUpdating Homebrew and installing essential packages..."
 brew update
-brew install asdf bat dog dust eza fd ffmpegthumbnailer fzf git git-cliff git-delta inlyne jq lazygit poppler ripgrep starship unar wezterm xh yazi zellij zoxide
+brew install asdf bat broot dust eza fd ffmpegthumbnailer fzf git git-cliff git-delta inlyne jq lazygit poppler ripgrep starship unar wezterm xh yazi zellij zoxide
 
 brew install --cask font-jetbrains-mono-nerd-font insomnia obsidian rectangle wezterm
 
