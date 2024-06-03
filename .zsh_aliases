@@ -119,6 +119,7 @@ alias gf="git fetch"  # Fetches from a remote repository
 alias gfo="git fetch origin"  # Fetches from the origin remote
 alias gk="gitk --all --branches"  # Opens gitk, a graphical history viewer for Git repositories
 alias gl="git pull"  # Pulls changes from a remote repository
+alias glom="git pull origin"
 alias glg="git log --stat --max-count=10"  # Shows the last 10 commits with stats
 alias glgp="git log --stat --max-count=10 -p"  # Shows the last 10 commits with stats and patch
 alias gm="git merge"  # Merges branches
