@@ -1,9 +1,17 @@
 # Initialize Starship prompt
 eval "$(starship init zsh)"
 
+# Initialize zoxide
+eval "$(zoxide init zsh)"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
 # Source custom aliases and functions
 if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
+    # Enable aliases to be sudo’ed
+    alias sudo='sudo '
 fi
 
 # Personal Config - XDG inspired
@@ -39,16 +47,9 @@ setopt AUTO_PUSHD
 setopt PUSHD_SILENT
 setopt PUSHD_TO_HOME
 setopt CDABLE_VARS
-setopt CORRECT
-
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
 
 # Load asdf
 . $(brew --prefix asdf)/libexec/asdf.sh
-
-# Initialize zoxide
-eval "$(zoxide init zsh)"
 
 # Load other scripts if needed
 # For example, any additional configuration appended by scripts will be listed below

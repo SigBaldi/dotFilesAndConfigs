@@ -8,5 +8,6 @@ mkdir -p "$XDG_CONFIG_HOME/nvim"
 echo "Downloading NeoVim configuration..."
 curl -o "$XDG_CONFIG_HOME/nvim/" "$XDG_DATA_HOME/nvim"
 
-echo "Neovim setup complete! Open Neovim and run ':Lazy sync' to install the specified plugins."
+echo "Neovim setup complete!"
+echo "Open Neovim and run ':Lazy sync' to install the specified plugins."
 # TODO: add question to set git editor config to nvim

@@ -56,7 +56,7 @@ alias showBlocked="sudo ipfw list"
 ############
 
 # Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias afk="pmset displaysleepnow"
 
 # Screensaver
 alias ss="open -a ScreenSaverEngine"
@@ -119,7 +119,7 @@ alias gf="git fetch"  # Fetches from a remote repository
 alias gfo="git fetch origin"  # Fetches from the origin remote
 alias gk="gitk --all --branches"  # Opens gitk, a graphical history viewer for Git repositories
 alias gl="git pull"  # Pulls changes from a remote repository
-alias glom="git pull origin"
+alias glo="git pull origin"  # Pulls changes from the origin remote
 alias glg="git log --stat --max-count=10"  # Shows the last 10 commits with stats
 alias glgp="git log --stat --max-count=10 -p"  # Shows the last 10 commits with stats and patch
 alias gm="git merge"  # Merges branches
@@ -157,7 +157,8 @@ alias brewup="brew update; brew upgrade; brew cleanup; brew doctor"
 #        #
 ##########
 
-alias freeport="lsof -P -t -i tcp:$1 | xargs kill"
+alias killNodePort="lsof -i -P -n | grep LISTEN | grep node | fzf --header 'Select a Node process to kill (PID PORT COMMAND)' | awk '{print $2}' | xargs kill"
+alias killAllNode="lsof -i -P -n | grep LISTEN | grep node | awk '{print $2}' | xargs kill"
 
 #########
 #       #
@@ -209,11 +210,11 @@ extract() {
     fi
 }
 
-##############################
-#                            #
+################################
+#                              #
 #  Config management workflow  #
-#                            #
-##############################
+#                              #
+################################
 
 alias edit_config="chmod +x $XDG_DATA_HOME/workflow/edit_dotfile_or_config.sh && $XDG_DATA_HOME/workflow/edit_dotfile_or_config.sh"
 alias update_config="chmod +x $XDG_DATA_HOME/workflow/update_dotfile_or_config.sh && $XDG_DATA_HOME/workflow/update_dotfile_or_config.sh"
