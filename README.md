@@ -29,8 +29,9 @@ manage_config <filename or path>
 
 ## Other Tools
 Contains separate configs for other tools as directories:
-- nvim (Neovim)
-- yazi
+- nvim (Neovim config based on kickstart.nvim, forked as personal repo)
+- yazi (basic config from yazi repo)
+- wezterm
 - zellij
 
 ### NeoVim: hyperextensible Vim-based text editor
@@ -43,6 +44,12 @@ This setup includes:
 - A popular colorscheme (Gruvbox) for better visuals.
 
 ### Yazi: Blazing fast terminal file manager written in Rust, based on async I/O.
+
+Set up Yazi with a basic config from its repo.
+
+### WezTerm: A GPU-accelerated cross-platform terminal emulator and multiplexer written in Rust
+
+
 
 ### Zellij: A terminal workspace with batteries included
 

@@ -47,8 +47,10 @@ show_menu() {
     echo "Which additional setup scripts do you want to run?"
     echo "1) Git setup"
     echo "2) asdf setup"
-    echo "3) None / Done"
-    echo -n "Enter your choice [1-3]: "
+    echo "3) NeoVim setup"
+    echo "4) Terminal Emulator setup"
+    echo "5) None / Done"
+    echo -n "Enter your choice [1-5]: "
     read choice
     return $choice
 }
@@ -74,6 +76,22 @@ while true; do
             $temp_dir/setup_asdf.zsh
             ;;
         3)
+            echo -e "\nDownloading NeoVim setup script..."
+            xh -o $temp_dir/setup_neovim.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/master/setup_neovim.zsh
+            chmod +x $temp_dir/setup_neovim.zsh
+            $temp_dir/setup_neovim.zsh
+            break
+            ;;
+
+        4)
+            echo -e "\nDownloading Terminal Emulator setup script..."
+            xh -o $temp_dir/setup_terminal.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/master/setup_terminal.zsh
+            chmod +x $temp_dir/setup_terminal.zsh
+            $temp_dir/setup_terminal.zsh
+            break
+            ;;
+:s
+        5)
             echo "No additional setup scripts will be run."
             break
             ;;
