@@ -56,7 +56,7 @@ alias showBlocked="sudo ipfw list"
 ############
 
 # Lock the screen (when going AFK)
-alias afk="pmset displaysleepnow"
+alias afk="pmset displaysleepnow" # I prefer to use pmset (which is a built-in command).
 
 # Screensaver
 alias ss="open -a ScreenSaverEngine"
@@ -117,6 +117,7 @@ alias gdc="git diff --cached"  # Shows changes between staged changes and the la
 alias gdt="git difftool"  # Shows changes using an external diff tool
 alias gf="git fetch"  # Fetches from a remote repository
 alias gfo="git fetch origin"  # Fetches from the origin remote
+alias gignore='f() { echo "$1" >> .gitignore; sort -u .gitignore -o .gitignore; }; f'
 alias gk="gitk --all --branches"  # Opens gitk, a graphical history viewer for Git repositories
 alias gl="git pull"  # Pulls changes from a remote repository
 alias glo="git pull origin"  # Pulls changes from the origin remote
@@ -210,9 +211,42 @@ extract() {
     fi
 }
 
+# take functions
+
+# mkcd is equivalent to takedir
+function mkcd takedir() {
+  mkdir -p $@ && cd ${@:$#}
+}
+
+function takeurl() {
+  local data thedir
+  data="$(mktemp)"
+  curl -L "$1" > "$data"
+  extract "$data"
+  thedir="$(tar tf "$data" | head -n 1)"
+  rm "$data"
+  cd "$thedir"
+}
+
+function takegit() {
+  git clone "$1"
+  cd "$(basename ${1%%.git})"
+}
+
+function take() {
+  if [[ $1 =~ ^(https?|ftp).*\.(tar\.bz2|tar\.gz|bz2|rar|gz|tar|tbz2|tgz|zip|Z|7z)$ ]]; then
+    takeurl "$1"
+  elif [[ $1 =~ ^([A-Za-z0-9]\+@|https?|git|ssh|ftps?|rsync).*\.git/?$ ]]; then
+    takegit "$1"
+  else
+    takedir "$@"
+  fi
+}
+
+
 ################################
 #                              #
-#  Config management workflow  #
+#   Config management workflow   #
 #                              #
 ################################
 

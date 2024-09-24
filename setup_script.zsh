@@ -8,12 +8,10 @@ if ! command -v brew &> /dev/null; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Update Homebrew and install essential packages
+# Update Homebrew and bundle install essential packages
 echo -e "\nUpdating Homebrew and installing essential packages..."
 brew update
-brew install asdf bat broot dust eza fd ffmpegthumbnailer fzf git git-cliff git-delta inlyne jq lazygit poppler ripgrep starship thefuck unar wezterm xh yazi zellij zoxide
-
-brew install --cask font-jetbrains-mono-nerd-font insomnia obsidian rectangle wezterm
+brew bundle install
 
 # Check for existing .fzf.* files before setting up fzf key bindings and fuzzy completion
 if [ ! -f ~/.fzf.zsh ]; then
@@ -29,12 +27,16 @@ curl -o ~/.zshrc https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/m
 echo -e "\nDownloading custom aliases..."
 curl -o ~/.zsh_aliases https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/.zsh_aliases
 
-# Download tools configuration
+# Tools configuration
 echo -e "\nDownloading basic Yazi configuration..."
 mkdir -p ~/.config/yazi
 curl -o ~/.config/yazi/keymap.toml https://raw.githubusercontent.com/sxyazi/yazi/latest/yazi-config/preset/keymap.toml
 curl -o ~/.config/yazi/theme.toml https://raw.githubusercontent.com/sxyazi/yazi/latest/yazi-config/preset/theme.toml
 curl -o ~/.config/yazi/yazi.toml https://raw.githubusercontent.com/sxyazi/yazi/latest/yazi-config/preset/yazi.toml
+
+echo -e "\nCreating basic Zellij configuration..."
+mkdir ~/.config/zellij
+zellij setup --dump-config > ~/.config/zellij/config.kdl
 
 # Source .zshrc to apply changes
 echo -e "\nSourcing .zshrc to apply changes..."
@@ -47,7 +49,9 @@ show_menu() {
     echo "Which additional setup scripts do you want to run?"
     echo "1) Git setup"
     echo "2) asdf setup"
-    echo "3) None / Done"
+    echo "3) mise en place setup"
+    echo "4) Neovim setup"
+    echo "5) None / Done"
     echo -n "Enter your choice [1-3]: "
     read choice
     return $choice
@@ -74,6 +78,12 @@ while true; do
             $temp_dir/setup_asdf.zsh
             ;;
         3)
+            echo -e "\nDownloading mise-en-place setup script..."
+            xh -o $temp_dir/setup_mise.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/master/setup_mise.zsh
+        4)
+            echo -e "\nDownloading Neovim setup script..."
+            xh -o $temp_dir/setup_neovim.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/master/setup_neovim.zsh
+        5)
             echo "No additional setup scripts will be run."
             break
             ;;
@@ -88,4 +98,4 @@ echo "Cleaning up the temporary directory..."
 rm -rf $temp_dir
 
 echo -e "\nSetup complete! Enjoy your new development environment."
-# TODO: Add Neovim setup script.
+

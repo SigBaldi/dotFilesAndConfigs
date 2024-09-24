@@ -1,0 +1,33 @@
+formulas = [
+  bat, # Command-line file viewer
+  broot, # A new way to see and navigate directory trees
+  dust, # A simpler version of du in rust
+  eza, # Simple data file viewer
+  fd, # Simple, fast and user-friendly alternative to find
+  ffmpegthumbnailer, # Lightweight video thumbnailer
+  fzf, # Command-line fuzzy finder
+  git, # Distributed revision control system
+  git-cliff, # A highly customizable, lightweight and cross-platform Git CLI
+  git-delta, # A viewer for git and diff output
+  inlyne, # Terminal-based line editor
+  jq, # Command-line JSON processor
+  lazygit, # Simple terminal UI for git repositories
+  poppler, # PDF rendering library
+  raycast, # Launcher and productivity tool
+  ripgrep, # Line-oriented search tool
+  starship, # Cross-shell prompt
+  thefuck, # Corrects previous console command
+  unar, # Lossless decompression utility
+  xh, # Friendly and fast tool for sending HTTP requests
+  yazi, # Markdown notebook
+  zellij, # Terminal workspace with windows, panes, and tabs
+  zoxide # A smarter cd command
+]
+casks = [
+  
+  font-jetbrains-mono-nerd-font, # Nerd Fonts patched font
+  insomnia, # API client for developers
+  obsidian, # Knowledge base and note-taking app
+  rectangle, # Window management app
+  wezterm # GPU-accelerated terminal emulator
+]

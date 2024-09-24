@@ -1,0 +1,20 @@
+# ~/.config/starship.toml
+
+# Wait a bit longer than the default 500ms for commands to execute. Node and git
+# timeout rather frequently.
+command_timeout = 5000
+
+[character]
+success_symbol = "[i❯](bold green) "
+error_symbol = "[i❯](bold red) "
+vicmd_symbol = "[n❯](bold green) "
+
+[docker_context]
+disabled = true
+
+[git_branch]
+symbol = ''
+
+[nodejs]
+format = '[node ($version)]($style) '
+version_format = '${raw}'

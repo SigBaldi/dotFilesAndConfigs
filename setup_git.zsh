@@ -21,7 +21,7 @@ git_email=$(prompt_user "Enter your Git email" "$existing_git_email")
 # Set up basic Git configuration
 git config --global user.name "$git_username"
 git config --global user.email "$git_email"
-git config --global core.editor "vim"
+git config --global core.editor "nvim"
 git config --global color.ui true
 git config --global init.defaultBranch main
 git config --global pull.rebase false
@@ -40,8 +40,7 @@ git config --global mergetool.delta.trustExitCode true
 
 # Output confirmation
 echo -e "Git configuration updated successfully!"
-echo "User name: $git_username"
-echo "Email: $git_email"
+bat ~/.gitconfig
 
 # Function to generate SSH keys
 generate_ssh_key() {

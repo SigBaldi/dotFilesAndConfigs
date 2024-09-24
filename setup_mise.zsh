@@ -1,9 +1,7 @@
 #!/bin/zsh
 
 # Set up asdf for managing versions
-echo "Setting up asdf..."
-brew install asdf
-source $(brew --prefix asdf)/asdf.sh 
+echo "Setting up mise-en-place..."
 
 # Install Node.js using asdf
 echo -e "Installing Node.js using asdf..."
