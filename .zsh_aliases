@@ -123,6 +123,8 @@ alias glo="git pull origin"  # Pulls changes from the origin remote
 alias glg="git log --stat --max-count=10"  # Shows the last 10 commits with stats
 alias glgp="git log --stat --max-count=10 -p"  # Shows the last 10 commits with stats and patch
 alias gm="git merge"  # Merges branches
+alias gmi='git merge $(git rev-parse --verify main &>/dev/null && echo "main" || echo "master") && pnpm install' # Merges the main or master branch and installs dependencies
+alias gmm='git merge $(git rev-parse --verify main &>/dev/null && echo "main" || echo "master")' # Merges the main or master branch
 alias gp="git push"  # Pushes changes to a remote repository
 alias gpo="git push origin"  # Pushes changes to the origin remote
 alias gr="git remote"  # Manages set of tracked repositories
