@@ -27,7 +27,7 @@ curl -o ~/.zshrc https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/m
 
 # Download custom aliases
 echo -e "\nDownloading custom aliases..."
-curl -o ~/.zsh_aliases https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/.zsh_aliases
+curl -o ~/.config/custom/.zsh_aliases https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/custom.zsh_aliases
 
 # Download tools configuration
 echo -e "\nDownloading basic Yazi configuration..."
@@ -106,4 +106,3 @@ echo "Cleaning up the temporary directory..."
 rm -rf $temp_dir
 
 echo -e "\nSetup complete! Enjoy your new development environment."
-# TODO: Add Neovim setup script.

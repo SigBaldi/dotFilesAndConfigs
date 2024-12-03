@@ -1,27 +1,17 @@
 # Initialize Starship prompt
 eval "$(starship init zsh)"
-
-# Initialize zoxide
-eval "$(zoxide init zsh)"
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+# Set up the custom
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/Projects/GitHub/dotFilesAndConfigs/"
 
 # Source custom aliases and functions
-if [ -f ~/.zsh_aliases ]; then
-    source ~/.zsh_aliases
-    # Enable aliases to be sudo’ed
-    alias sudo='sudo '
+if [ -f ${XDG_CONFIG_HOME}/custom/.zsh_aliases ]; then
+    source ${XDG_CONFIG_HOME}/custom/.zsh_aliases
 fi
 
-# Personal Config - XDG inspired
-export USER_PROJECTS="$HOME/Projects/GitHub"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$USER_PROJECTS/dotFilesAndConfigs"
-
 # History settings
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -47,9 +37,25 @@ setopt AUTO_PUSHD
 setopt PUSHD_SILENT
 setopt PUSHD_TO_HOME
 setopt CDABLE_VARS
+# setopt CORRECT
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
 
 # Load asdf
 . $(brew --prefix asdf)/libexec/asdf.sh
 
+# Initialize zoxide
+eval "$(zoxide init zsh)"
+
+# Development Environment Variables
+
+if [ -f ${XDG_CONFIG_HOME}/custom/.env.dev ]; then
+source ${XDG_CONFIG_HOME}/.env.dev
+fi
+
 # Load other scripts if needed
 # For example, any additional configuration appended by scripts will be listed below
+
+# thefuck
+eval $(thefuck --alias)
