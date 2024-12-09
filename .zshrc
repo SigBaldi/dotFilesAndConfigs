@@ -1,8 +1,10 @@
-# Initialize Starship prompt
-eval "$(starship init zsh)"
-# Set up the custom
+# Set up custom environment variables
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/Projects/GitHub/dotFilesAndConfigs/"
+export STARSHIP_CONFIG="${XDG_CONFIG_HOME}/starship/starship.toml"
+
+# Initialize Starship prompt
+eval "$(starship init zsh)"
 
 # Source custom aliases and functions
 if [ -f ${XDG_CONFIG_HOME}/custom/.zsh_aliases ]; then

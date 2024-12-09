@@ -1,0 +1,95 @@
+format = """
+[░▒▓](#a3aed2)\
+[  ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#394260)\
+${custom.git_branch}\
+${custom.git_status}\
+[](fg:#394260 bg:#212736)\
+$nodejs\
+$python\
+[](fg:#212736 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
+\n$character"""
+
+command_timeout = 2500
+
+[character]
+success_symbol = "[󰋇 ](bold green)"
+error_symbol = "[󰆽 ](bold red)"
+
+[cmd_duration]
+min_time = 1000
+show_milliseconds = true
+
+[directory]
+style = "fg:#e3e5e5 bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"GitHub" = " "
+"Music" = " "
+"Pictures" = " "
+"Slice" = " "
+"Projects" = " "
+
+[docker_context]
+disabled = true
+
+[git_branch]
+symbol = ""
+style = "fg:#769ff0 bg:#394260"
+format = "[ ($symbol $branch(:$remote_branch)) ]($style)"
+disabled = true
+
+[custom.git_branch]
+description = "Custom git_branch which calls git directly"
+command = "~/.config/starship/git_branch_prompt.zsh || true"
+when = "true"
+symbol = " "
+style = "fg:#769ff0 bg:#394260"
+format = "[( $symbol$output)]($style)"
+
+[git_commit]
+disabled = true
+
+[git_metrics]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_status]
+style = "fg:#769ff0 bg:#394260"
+format = "([\\[$all_status$ahead_behind\\] ]($style))"
+disabled = true
+
+[custom.git_status]
+description = "Custom git_status which calls git directly"
+command = "~/.config/starship/git_status_prompt.zsh || true"
+when = "true"
+style = "fg:#769ff0 bg:#394260"
+format = "([\\[$output\\]]($style))"
+#disabled = true
+
+[nodejs]
+symbol = " "
+style = "bg:#212736"
+format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)"
+
+[python]
+symbol = "󰌠 "
+python_binary = ["./venv/bin/python", "python", "python3", "python2"]
+format = "[//](black bold) [${symbol} ${pyenv_prefix}(${version} )(\\($virtualenv\\) )]($style) "
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#1d2230"
+format = "[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)"

@@ -25,9 +25,15 @@ fi
 echo -e "\nDownloading shell configuration..."
 curl -o ~/.zshrc https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/.zshrc
 
+# Download prompt configuration
+echo -e "\nDownloading starship configuration..."
+curl -o ~/.config/starship/starship.toml https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/starship/starship.toml
+curl -o ~/.config/starship/git_branch_prompt.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/starship/git_branch_prompt.zsh
+curl -o ~/.config/starship/git_status_prompt.zsh https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/starship/git_status_prompt.zsh
+
 # Download custom aliases
 echo -e "\nDownloading custom aliases..."
-curl -o ~/.config/custom/.zsh_aliases https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/custom.zsh_aliases
+curl -o ~/.config/custom/.zsh_aliases https://raw.githubusercontent.com/SigBaldi/dotFilesAndConfigs/main/custom/.zsh_aliases
 
 # Download tools configuration
 echo -e "\nDownloading basic Yazi configuration..."
