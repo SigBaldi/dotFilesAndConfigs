@@ -24,6 +24,13 @@ config.keys = {
 			act.SendKey({ key = "L", mods = "CTRL" }),
 		}),
 	},
+	-- Splits the current pane in half vertically such that the current pane
+	-- becomes the top half and the new bottom half spawns a new command
+	{
+		key = "|",
+		mods = "CTRL|SHIFT|ALT",
+		action = wezterm.action.SplitVertical({ domain = "currentPaneDomain" }),
+	},
 }
 -- How many lines of scrollback you want to retain per tab
 config.scrollback_lines = 100000
